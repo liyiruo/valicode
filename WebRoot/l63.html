@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>6.3腾讯验证框架实现图形验证码</title>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+		<script type="text/javascript">
+			function vali(){
+				var valicode = new TencentCaptcha('2092907681', function(res){
+					if(res.ret==0){
+						var form = document.getElementById("form1");
+						form.submit();
+					}
+					else{
+						alert("验证出错！");
+					}
+				});
+				valicode.show();
+			}
+		</script>
+	</head>
+	<body>
+		<form id="form1" method="post" action="index.jsp">
+			<div>
+				<input type="button" value="登录" id="btnOK" onclick="vali()" />
+			</div>
+		</form>
+	</body>
+</html>
